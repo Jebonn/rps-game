@@ -10,65 +10,40 @@ function getComputerChoice() {
     }
 }
 
-// Prompt user to pick RPS choice
-function getPlayerChoice() {
-    invalidChoice = true;
-    while(invalidChoice) {
-        var choice = prompt("Type rock, paper, or scissors: ");
-
-        choice = choice.slice(0,1).toUpperCase() + choice.slice(1).toLowerCase();
-
-        if (choice === "Rock" || choice === "Paper" || choice === "Scissors") {
-            invalidChoice = false;
-        }
-    }
-    return choice;
-}
-
-// Return who wins or tie
-function playRound(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice) {
-        return "It's a draw!";
-    } else if (playerChoice === "Rock" && computerChoice === "Scissors") {
-        return "Player Wins!";
-    } else if (playerChoice === "Paper" && computerChoice === "Rock") {
-        return "Player Wins!";
-    } else if (playerChoice === "Scissors" && computerChoice === "Paper") {
-        return "Player Wins!";
+function pickWinner(playerChoice, compChoice) {
+    if (playerChoice === compChoice) {
+        return results.textContent = "It's a draw";
+    } else if (playerChoice === "Rock" && compChoice === "Scissors") {
+        return results.textContent = "Player Wins";
+    } else if (playerChoice === "Paper" && compChoice === "Rock") {
+        return results.textContent = "Player Wins";
+    } else if (playerChoice === "Scissors" && compChoice === "Paper") {
+        return results.textContent = "Player Wins";
     } else {
-        return "Computer Wins!";
+        return results.textContent = "Computer Wins";
     }
 }
 
-function game() {
-    let maxRounds = 3;
-    let playerScore = 0;
-    let computerScore = 0;
+function playRound() {
+    const playerChoice = this.textContent;
+    const compChoice = getComputerChoice();
+    const roundResult = pickWinner(playerChoice, compChoice);
 
-    for (let i = 1; i <= maxRounds; i++) {
-        const playerChoice = getPlayerChoice();
-        const computerChoice = getComputerChoice();
-        const result = playRound(playerChoice, computerChoice);
-
-        if (result === "Player Wins!") {
-            playerScore += 1;
-        } else if (result === "Computer Wins!") {
-            computerScore += 1;
-        }
-
-        console.log(`-----Round ${i}-----`);
-        console.log(`Player chooses ${playerChoice}\nComputer chooses ${computerChoice}`);
-        console.log(`${result}`)
-        console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
-    }
-
-    if (playerScore > computerScore) {
-        console.log("\nPlayer wins the match!");
-    } else if (computerScore > playerScore) {
-        console.log("\nComputer wins the match!");
-    } else {
-        console.log("\nThe match is a draw!");
+    if (roundResult === "Player Wins") {
+        playerScoreTracker += 1;
+        playerScore.textContent = `${playerScoreTracker}`;
+    } else if (roundResult === "Computer Wins") {
+        compScoreTracker += 1;
+        compScore.textContent = `${compScoreTracker}`;
     }
 }
 
-game();
+const playerScore = document.querySelector('#player-score');
+let playerScoreTracker = 0;
+
+const compScore = document.querySelector('#computer-score');
+let compScoreTracker = 0;
+
+const results = document.querySelector('.results');
+const buttons = document.querySelectorAll('#container button');
+buttons.forEach(button => button.addEventListener('click', playRound));
