@@ -1,2 +1,2 @@
 # rps-game
-Rock paper scissors JavaScript practice
+Rock paper scissors HTML/CSS/JavaScript practice
