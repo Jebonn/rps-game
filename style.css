@@ -1,6 +1,24 @@
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2, h3 {
+    margin: 4px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    min-width: 236px;
+    padding-left: 8px;
+}
+
+li {
+    padding: 8px;
+    font-size: 14px;
 }
 
 .game-screen {
@@ -10,10 +28,35 @@ body {
     border-radius: 4px;
     border-color: black;
     border-style: solid;
+    padding: 16px;
 }
 
 .game-screen .information-track {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#restart-btn {
+    visibility: hidden;
+    margin-top: 4px;
+    padding: 2px 10px;
+    border-color: #2196F3;
+}
+
+#restart-btn:hover {
+    border-color: blue;
+}
+
+.prompt {
+    margin-bottom: 8px;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    gap: 16px;
+    border-style: dotted;
+    padding: 8px;
 }

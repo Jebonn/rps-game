@@ -8,20 +8,23 @@
     <body>
         <div class="game-screen">
             <h2>Rock-Paper-Scissors Game</h2>
-            <p>First to 5 wins</p>
+            <h3>First to 5 wins</h3>
             <div class="information-track">
-                <div class="results">-</div>
-                <div>
-                    <span>Player Score: <span id="player-score">0</span></span>
-                    <span>Computer Score: <span id="computer-score">0</span></span>
+                <div class="scores">
+                    <div>Player Wins: <span id="player-score">0</span></div>
+                    <div>Computer Wins: <span id="computer-score">0</span></div>
                 </div>
             </div>
+            <button id="restart-btn">Restart</button>
+            <div class="prompt">Choose rock, paper, or scissors:</div>
             <div id="container">
                 <button>Rock</button>
                 <button>Paper</button>
                 <button>Scissors</button>
             </div>
         </div>
+        <h3 id="previous-moves-header">Previous Moves</h3>
+        <ul id="previous-moves"></ul>
     </body>
     <script src="rps-game.js"></script>
 </html>
